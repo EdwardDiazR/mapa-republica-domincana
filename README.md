@@ -6,6 +6,4 @@ Con un mapa dinamico, que resalta la provincia seleccionada en dicho mapa
 
 Utilizando la api publica del gobierno Dominicano: https://developer.digital.gob.do/apis/34995f58-a45f-4b9e-995f-58a45f2b9e92
 
-![1](https://github.com/EdwardDiazR/provincias-republica-dominicana/assets/67916276/a1e34c0d-18c1-4057-a2c6-6e76fdd39086)
-
-
+![Screenshot 2024-03-10 120014](https://github.com/EdwardDiazR/provincias-rd/assets/67916276/9fcdd345-881a-4dac-b346-6dd9bbda5a8c)
