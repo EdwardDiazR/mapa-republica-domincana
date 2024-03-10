@@ -1,0 +1,279 @@
+@import url("https://fonts.googleapis.com/css2?family=Syne:wght@300..500&display=swap");
+
+:host {
+  --Orange: #ee7214;
+  --Selected: #f9e8d9;
+}
+* {
+  font-family: "Syne", sans-serif;
+}
+body {
+  background-image: url("https://static.independent.co.uk/2023/12/12/14/iStock-1362927676.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  max-height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.142);
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.map-province {
+  stroke: rgb(247, 247, 247);
+  stroke-width: 1.73841px;
+}
+
+.province-info__container {
+  display: flex;
+  height: 20px;
+  align-items: center;
+  justify-content: center;
+}
+.focused {
+  fill: green;
+}
+
+.unfocused {
+  fill: rgb(155, 137, 137);
+}
+
+.api-side {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  height: 90%;
+  box-sizing: border-box;
+  width: 100%;
+  justify-content: space-between;
+  padding: 10px 50px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.header-side {
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 1) 63%,
+    rgba(255, 162, 0, 1) 100%
+  );
+  height: 50px;
+  max-height: 10%;
+  box-sizing: border-box;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.title-side {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 5px;
+}
+.header-side > .title-side > img {
+  object-fit: contain;
+  max-height: 100%;
+}
+
+.header-title {
+  font-size: 1.2rem;
+}
+
+.provinces-side {
+  width: 40%;
+  max-height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+.load-provinces-btn {
+  border: 1px solid transparent;
+  min-height: 35px;
+  max-height: 35px;
+  width: 100%;
+  background-color: green;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+}
+
+.provinces-list {
+  flex-grow: 1;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 10px;
+  width: 100%;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background-color: white;
+  position: static;
+  /* Hide vertical scrollbar */
+}
+
+.provinces-list__item {
+  display: flex;
+  width: 100%;
+  background-color: white;
+  height: 40px;
+  padding: 10px;
+  margin: 3px;
+  cursor: pointer;
+  box-sizing: border-box;
+  border-bottom: 1px solid lightgray;
+  border-radius: 5px;
+  position: relative;
+}
+
+.provinces-list__item:hover .tool-tip {
+  visibility: visible;
+  animation-name: appear;
+  animation-duration: 0.8s;
+}
+
+.tool-tip {
+  visibility: hidden;
+  width: fit-content;
+  background-color: rgba(0, 0, 0, 0.751);
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  box-sizing: border-box;
+  padding: 5px;
+  max-height: 100%;
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  bottom: 50%;
+  left: 80px;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.province-card {
+  height: 35%;
+  width: 100%;
+  border: 1px solid;
+  border-radius: 10px;
+  background-color: white;
+  padding: 10px;
+  box-sizing: border-box;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1rem;
+  /* box-shadow: 0px 0px 15px 1px rgba(245, 219, 219, 0.871); */
+}
+
+.selected {
+  background-color: var(--Selected);
+  border: none;
+  font-weight: bold;
+}
+
+.detail-side {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.municipios-list {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin: 0;
+  list-style: none;
+  padding: 10px;
+  justify-content: flex-start;
+  align-items: center;
+
+  gap: 5px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.municipios-list:-webkit-scrollbar {
+  display: none;
+}
+
+.empty {
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.municipios-list__item {
+  display: flex;
+  width: 100%;
+  border-radius: 5px;
+  height: 40px;
+  padding: 10px;
+  margin: 3px;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.disctricts {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    flex-grow: 1;
+    list-style: none;
+    padding: 10px;
+    justify-content: flex-start;
+    /* align-items: center; */
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.districts-list {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    flex-grow: 1;
+}
